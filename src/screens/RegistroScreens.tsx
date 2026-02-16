@@ -7,14 +7,16 @@ interface Props extends StackScreenProps<any, any>{};
 
 export const RegistroScreens = ({navigation}: Props) => {
 
-    /* usamos el useState para guardar los datos escritos por el cliente */
-  const [nombre, setNombre] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [usuario, setUsuario] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+    //usamos el useState para guardar los datos escritos por el cliente
+    //hook useState: permite cambiar el estado de una variable, objeto
+    const [nombre, setNombre] = useState<string>('');
+    const [correo, setCorreo] = useState<string>('');
+    const [usuario, setUsuario] = useState<string>('');
+    const [password, setPassword] = useState<string>('');
+    const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-  return (
+
+return (
     <View style={stylesGlobal.container}>
         <Text style={stylesGlobal.title}>Registro</Text>
 
@@ -25,7 +27,6 @@ export const RegistroScreens = ({navigation}: Props) => {
             onChangeText={setNombre}
             autoCapitalize="words"
             placeholder="ej: Juan Pérez"
-
         />
 
         <Text style={stylesGlobal.label}>Correo electrónico</Text>
@@ -36,7 +37,6 @@ export const RegistroScreens = ({navigation}: Props) => {
             keyboardType="email-address"
             autoCapitalize="none"
             placeholder="ej: juan@correo.com"
-
         />
 
         <Text style={stylesGlobal.label}>Nombre de usuario</Text>
@@ -55,7 +55,6 @@ export const RegistroScreens = ({navigation}: Props) => {
             onChangeText={setPassword}
             secureTextEntry
             placeholder="Ingrese su contraseña"
-
         />
 
         <Text style={stylesGlobal.label}>Confirmar contraseña</Text>
