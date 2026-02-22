@@ -1,21 +1,25 @@
 import React, { useState } from 'react'
 import { View, Text, Button, TextInput } from 'react-native'
+import { useNavigation, CommonActions } from '@react-navigation/native'
 import { stylesGlobal } from '../theme/appTheme';
 
 export const InicioScreens = () => {
 
-  const [formLogin, setFormLogin] = useState({
-    email: '',
-    password: ''
-  });
+  const navigation = useNavigation();
 
-  const handleChangeValue = (name: string, value: string) => {
-    setFormLogin({ ...formLogin, [name]: value });
-  }
+  const [usuario, setUsuario] = useState('');
+  const [password, setPassword] = useState('');
 
-  const handleSignIn = () => {
-    console.log(formLogin);
-  }
+  const ingresar = () => {
+    console.log({
+      email: usuario,
+      password: password
+    });
+
+    navigation.dispatch(
+      CommonActions.navigate({ name: 'Principal' })
+    );
+  };
 
   return (
     <View style={stylesGlobal.container}>
@@ -24,20 +28,20 @@ export const InicioScreens = () => {
         <Text style={stylesGlobal.label}>Nombre de usuario</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={formLogin.email}
-            onChangeText={(value) => handleChangeValue('email', value)}
+            value={usuario}
+            onChangeText={setUsuario}
             autoCapitalize="none"/>
 
         <Text style={stylesGlobal.label}>Contraseña</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={formLogin.password}
-            onChangeText={(value) => handleChangeValue('password', value)}
+            value={password}
+            onChangeText={setPassword}
             secureTextEntry/>
 
         <Button 
             title="Ingresar"
-            onPress={handleSignIn}
+            onPress={ingresar}
             color="#451D1C"
         />
     </View>

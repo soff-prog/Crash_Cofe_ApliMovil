@@ -7,24 +7,24 @@ export const RegistroScreens = () => {
 
     const navigation = useNavigation();
 
-    //usamos el useState para guardar los datos escritos por el cliente
     const [nombre, setNombre] = useState<string>('');
     const [correo, setCorreo] = useState<string>('');
     const [usuario, setUsuario] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    const handleRegistro = () => {
-        console.log({
-            nombre,
-            correo,
-            usuario,
-            password,
-            confirmPassword
-        });
+    const registrar = () => {
+        console.log('REGISTRO');
+        console.log('Nombre:', nombre);
+        console.log('Correo:', correo);
+        console.log('Usuario:', usuario);
+        console.log('Password:', password);
+        console.log('Confirm Password:', confirmPassword);
 
-        navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }));
-    }
+        navigation.dispatch(
+          CommonActions.navigate({ name: 'Inicio' })
+        );
+    };
 
 return (
     <View style={stylesGlobal.container}>
@@ -78,7 +78,7 @@ return (
 
         <Button 
             title="Iniciar Sesión"
-            onPress={handleRegistro}
+            onPress={registrar}
             color="#451D1C"
         />
     </View>
