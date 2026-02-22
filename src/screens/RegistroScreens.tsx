@@ -7,14 +7,22 @@ interface Props extends StackScreenProps<any, any>{};
 
 export const RegistroScreens = ({navigation}: Props) => {
 
-    //usamos el useState para guardar los datos escritos por el cliente
-    //hook useState: permite cambiar el estado de una variable, objeto
     const [nombre, setNombre] = useState<string>('');
     const [correo, setCorreo] = useState<string>('');
     const [usuario, setUsuario] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
+    const registrar = () => {
+        console.log('REGISTRO');
+        console.log('Nombre:', nombre);
+        console.log('Correo:', correo);
+        console.log('Usuario:', usuario);
+        console.log('Password:', password);
+        console.log('Confirm Password:', confirmPassword);
+
+        navigation.navigate('Inicio');
+    };
 
 return (
     <View style={stylesGlobal.container}>
@@ -68,7 +76,7 @@ return (
 
         <Button 
             title="Iniciar Sesión"
-            onPress={() => navigation.navigate('Inicio')}
+            onPress={registrar}
             color="#451D1C"
         />
     </View>
