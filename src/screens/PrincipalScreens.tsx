@@ -1,11 +1,11 @@
 import React from 'react'
 import { View, Text, TouchableOpacity, StyleSheet, Image } from 'react-native'
-import { StackScreenProps } from '@react-navigation/stack';
+import { useNavigation, CommonActions } from '@react-navigation/native'
 import { stylesGlobal } from '../theme/appTheme';
 
-interface Props extends StackScreenProps<any, any>{};
+export const PrincipalScreens = () => {
 
-export const PrincipalScreens = ({navigation}: Props) => {
+  const navigation = useNavigation();
 
   return (
     <View style={stylesGlobal.container}>
@@ -21,13 +21,17 @@ export const PrincipalScreens = ({navigation}: Props) => {
         <View style={styles.buttonsContainer}>
             <TouchableOpacity
                 style={stylesGlobal.button}
-                onPress={() => navigation.navigate('Inicio')}>
+                onPress={() =>
+                  navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }))
+                }>
                 <Text style={stylesGlobal.buttonText}>Iniciar Sesión</Text>
             </TouchableOpacity>
 
             <TouchableOpacity
                 style={stylesGlobal.button}
-                onPress={() => navigation.navigate('Registro')}>
+                onPress={() =>
+                  navigation.dispatch(CommonActions.navigate({ name: 'Registro' }))
+                }>
                 <Text style={stylesGlobal.buttonText}>Registrarse</Text>
             </TouchableOpacity>
         </View>

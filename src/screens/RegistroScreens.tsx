@@ -1,28 +1,30 @@
 import React, { useState } from 'react'
 import { View, Text, Button, TextInput } from 'react-native'
-import { StackScreenProps } from '@react-navigation/stack';
+import { useNavigation, CommonActions } from '@react-navigation/native'
 import { stylesGlobal } from '../theme/appTheme';
 
-interface Props extends StackScreenProps<any, any>{};
+export const RegistroScreens = () => {
 
-export const RegistroScreens = ({navigation}: Props) => {
+    const navigation = useNavigation();
 
+    //usamos el useState para guardar los datos escritos por el cliente
     const [nombre, setNombre] = useState<string>('');
     const [correo, setCorreo] = useState<string>('');
     const [usuario, setUsuario] = useState<string>('');
     const [password, setPassword] = useState<string>('');
     const [confirmPassword, setConfirmPassword] = useState<string>('');
 
-    const registrar = () => {
-        console.log('REGISTRO');
-        console.log('Nombre:', nombre);
-        console.log('Correo:', correo);
-        console.log('Usuario:', usuario);
-        console.log('Password:', password);
-        console.log('Confirm Password:', confirmPassword);
+    const handleRegistro = () => {
+        console.log({
+            nombre,
+            correo,
+            usuario,
+            password,
+            confirmPassword
+        });
 
-        navigation.navigate('Inicio');
-    };
+        navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }));
+    }
 
 return (
     <View style={stylesGlobal.container}>
@@ -76,7 +78,7 @@ return (
 
         <Button 
             title="Iniciar Sesión"
-            onPress={registrar}
+            onPress={handleRegistro}
             color="#451D1C"
         />
     </View>

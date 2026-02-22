@@ -1,43 +1,43 @@
 import React, { useState } from 'react'
 import { View, Text, Button, TextInput } from 'react-native'
-import { StackScreenProps } from '@react-navigation/stack';
 import { stylesGlobal } from '../theme/appTheme';
 
-interface Props extends StackScreenProps<any, any>{};
+export const InicioScreens = () => {
 
-export const InicioScreens = ({navigation}: Props) => {
+  const [formLogin, setFormLogin] = useState({
+    email: '',
+    password: ''
+  });
 
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const handleChangeValue = (name: string, value: string) => {
+    setFormLogin({ ...formLogin, [name]: value });
+  }
 
-  const ingresar = () => {
-    console.log({ email, password });
-    navigation.popToTop();
+  const handleSignIn = () => {
+    console.log(formLogin);
   }
 
   return (
     <View style={stylesGlobal.container}>
         <Text style={stylesGlobal.title}>Iniciar Sesión</Text>
 
-        <Text style={stylesGlobal.label}>Correo electrónico</Text>
+        <Text style={stylesGlobal.label}>Nombre de usuario</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={email}
-            onChangeText={setEmail}
-            autoCapitalize="none"
-        />
+            value={formLogin.email}
+            onChangeText={(value) => handleChangeValue('email', value)}
+            autoCapitalize="none"/>
 
         <Text style={stylesGlobal.label}>Contraseña</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={password}
-            onChangeText={setPassword}
-            secureTextEntry
-        />
+            value={formLogin.password}
+            onChangeText={(value) => handleChangeValue('password', value)}
+            secureTextEntry/>
 
         <Button 
             title="Ingresar"
-            onPress={ingresar}
+            onPress={handleSignIn}
             color="#451D1C"
         />
     </View>
