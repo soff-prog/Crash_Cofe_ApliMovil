@@ -11,14 +11,8 @@ export const InicioScreens = () => {
   const [password, setPassword] = useState('');
 
   const ingresar = () => {
-    console.log({
-      email: usuario,
-      password: password
-    });
-
-    navigation.dispatch(
-      CommonActions.navigate({ name: 'Principal' })
-    );
+    console.log({ email: usuario, password: password});
+    navigation.dispatch( CommonActions.navigate({ name: 'Principal' }));
   };
 
   return (
