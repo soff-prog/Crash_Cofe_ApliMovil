@@ -3,16 +3,31 @@ import { View, Text, Button, TextInput } from 'react-native'
 import { useNavigation, CommonActions } from '@react-navigation/native'
 import { stylesGlobal } from '../theme/appTheme';
 
+interface FormLogin{
+  email: string;
+  password: string;
+}
+
 export const InicioScreens = () => {
 
   const navigation = useNavigation();
 
-  const [usuario, setUsuario] = useState('');
-  const [password, setPassword] = useState('');
+  const [formLogin, setFormLogin] = useState<FormLogin>({
+    email: '',
+    password: ''
+  });
 
-  const ingresar = () => {
-    console.log({ email: usuario, password: password});
-    navigation.dispatch( CommonActions.navigate({ name: 'Principal' }));
+  //funcion para capturar los valores del formulario
+  const handleChangeValue = (name: string, value: string): void =>{
+    setFormLogin({...formLogin, [name]: value});
+  }
+
+  //funcion para iniciar sesion
+  const handleSingIn = (): void => {
+    console.log(formLogin);
+    navigation.dispatch(
+      CommonActions.navigate({ name: 'Principal' })
+    );
   };
 
   return (
@@ -22,20 +37,20 @@ export const InicioScreens = () => {
         <Text style={stylesGlobal.label}>Nombre de usuario</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={usuario}
-            onChangeText={setUsuario}
+            value={formLogin.email}
+            onChangeText={(value)=>handleChangeValue('email', value)}
             autoCapitalize="none"/>
 
         <Text style={stylesGlobal.label}>Contraseña</Text>
         <TextInput
             style={stylesGlobal.input}
-            value={password}
-            onChangeText={setPassword}
+            value={formLogin.password}
+            onChangeText={(value)=>handleChangeValue('password', value)}
             secureTextEntry/>
 
         <Button 
             title="Ingresar"
-            onPress={ingresar}
+            onPress={handleSingIn}
             color="#451D1C"
         />
     </View>
