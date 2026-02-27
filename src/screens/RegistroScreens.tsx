@@ -28,7 +28,9 @@ export const RegistroScreens = ({ listUsers, handleAddUser }: Props) => {
   });
 
   const [hiddenPassword, setHiddenPassword] = useState(true);
+
   const [hiddenConfirm, setHiddenConfirm] = useState(true);
+
   const navigation = useNavigation();
 
   const handleChangeValue = (name: string, value: string) => {
@@ -36,26 +38,37 @@ export const RegistroScreens = ({ listUsers, handleAddUser }: Props) => {
   }
 
   const handleRegister = () => {
-    if(Object.values(formRegister).some(v => v === '')){
-      Alert.alert('Error','Por favor complete todos los campos');
-      return;
-    }
-    if(formRegister.password !== formRegister.confirmPassword){
-      Alert.alert('Error','Las contraseñas no coinciden');
-      return;
-    }
-
-    const newUser: User = {
-      id: listUsers.length + 1,
-      name: formRegister.nombre,
-      email: formRegister.correo,
-      user: formRegister.usuario,
-      password: formRegister.password
-    }
-    handleAddUser(newUser);
-    Alert.alert('Éxito','Usuario registrado correctamente');
-    navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }));
+  // Validar campos vacíos
+  if (
+    formRegister.nombre === '' ||
+    formRegister.correo === '' ||
+    formRegister.usuario === '' ||
+    formRegister.password === '' ||
+    formRegister.confirmPassword === ''
+  ) {
+    Alert.alert('Error','Por favor complete todos los campos');
+    return;
   }
+
+  // Validar contraseñas
+  // para desigualdad estricta !==
+  if (formRegister.password !== formRegister.confirmPassword){
+    Alert.alert('Error','Las contraseñas no coinciden');
+    return;
+  }
+
+  const newUser: User = {
+    id: listUsers.length + 1,
+    name: formRegister.nombre,
+    email: formRegister.correo,
+    user: formRegister.usuario,
+    password: formRegister.password
+  }
+
+  handleAddUser(newUser);
+  Alert.alert('Éxito','Usuario registrado correctamente');
+  navigation.dispatch(CommonActions.navigate({ name: 'Inicio' }));
+}
 
   return (
     <View style={stylesGlobal.container}>

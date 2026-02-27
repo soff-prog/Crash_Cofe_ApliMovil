@@ -47,8 +47,8 @@ export const ModalCartComponent = ({ isVisible, cart, hiddenModal, onBuy }: Prop
                     </View>
 
                     {cart.length === 0 ? (
-                        <View style={{ alignItems: 'center', marginVertical: 20 }}>
-                            <Text style={{ fontSize: 16, color: '#777' }}>
+                        <View style={stylesGlobal.containerView}>
+                            <Text style={stylesGlobal.text}>
                                 Tu carrito está vacío
                             </Text>
                         </View>
@@ -95,15 +95,13 @@ export const ModalCartComponent = ({ isVisible, cart, hiddenModal, onBuy }: Prop
                                     </View>
                                 )}
                             />
-
-                            {/*Total*/}
+                            
                             <View style={stylesGlobal.containerTotalPay}>
                                 <Text style={stylesGlobal.textTotalPay}>
                                     Total pagar: ${totalPay().toFixed(2)}
                                 </Text>
                             </View>
 
-                            {/*Boton*/}
                             <TouchableOpacity
                                 style={stylesGlobal.button}
                                 onPress={onBuy}

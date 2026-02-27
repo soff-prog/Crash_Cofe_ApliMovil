@@ -21,7 +21,6 @@ export const CardProductComponent = ({ item, changeStockProduct }: Props) => {
         <>
             <View style={stylesGlobal.containerCard}>
 
-                {/* 👉 Imagen ahora abre el modal */}
                 <TouchableOpacity onPress={hiddenModal}>
                     <Image
                         source={{ uri: item.pathImage }}
@@ -36,6 +35,7 @@ export const CardProductComponent = ({ item, changeStockProduct }: Props) => {
                     </Text>
 
                     {/* Si no hay stock */}
+                    {/*  && es y */}
                     {item.stock === 0 && (
                         <Text style={stylesGlobal.textStock}>
                             Producto agotado

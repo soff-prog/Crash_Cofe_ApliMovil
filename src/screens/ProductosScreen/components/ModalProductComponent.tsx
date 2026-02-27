@@ -19,6 +19,7 @@ export const ModalProductComponent = ({
 }: Props) => {
 
     const { width } = useWindowDimensions();
+
     const [quantity, setQuantity] = useState<number>(1);
 
     const handleAddProduct = () => {
@@ -35,7 +36,6 @@ export const ModalProductComponent = ({
                     width: width * 0.80
                 }}>
 
-                    {/* 🔥 HEADER IGUAL AL HOME */}
                     <View style={stylesGlobal.headerModal}>
                         <Text style={stylesGlobal.titleModal}>
                             {item.name} - ${item.price.toFixed(2)}

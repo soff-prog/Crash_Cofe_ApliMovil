@@ -187,5 +187,43 @@ textTotalPay: {
     fontWeight: 'bold',
     color: '#451D1C'
 },
+renderCategoryView: {
+    marginBottom: 25, 
+    width: '100%', 
+    alignItems: 'center'
+},
 
+renderCategoryTitle: {
+    fontSize: 22, 
+    fontWeight: 'bold', 
+    color: '#451D1C', 
+    marginBottom: 10
+},
+
+cartView:{
+    position: 'absolute',
+    right: -6,
+    top: -6,
+    backgroundColor: 'red',
+    borderRadius: 10,
+    width: 18,
+    height: 18,
+    justifyContent: 'center',
+    alignItems: 'center'
+},
+
+cartText:{
+    color: 'white',
+    fontSize: 10,
+    fontWeight: 'bold'
+},
+
+containerView: {
+    alignItems: 'center', 
+    marginVertical: 20
+},
+text: {
+    fontSize: 16, 
+    color: '#777' 
+}
 });

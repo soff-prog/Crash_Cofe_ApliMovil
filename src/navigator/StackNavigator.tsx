@@ -19,7 +19,7 @@ export const StackNavigator = () => {
 
   const users: User[] = [
     { id: 1, name: 'Viviana Flores', email: 'vflores@gmail.com', user: 'vivi', password: '1234' },
-    { id: 2, name: 'Carlos Aguas', email: 'caguas@gmail.com', user: 'carlos', password: '5678' }
+    { id: 2, name: 'Sofia Paz y Miño', email: 'soff@gmail.com', user: 'soff', password: '2013' }
   ];
 
   const [listUsers, setListUsers] = useState<User[]>(users);

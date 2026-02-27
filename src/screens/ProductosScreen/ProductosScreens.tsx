@@ -71,7 +71,7 @@ export const ProductosScreen = () => {
     const product = productsState.find(p => p.id === id);
     if (!product) return;
 
-    // ❌ Verificar si hay suficiente stock
+    //suficiente stock
     if (product.stock < quantity) {
         alert('No hay suficiente stock de este producto');
         return;
@@ -83,7 +83,7 @@ export const ProductosScreen = () => {
     );
     setProductsState(updatedProducts);
 
-    //Revisamos si ya está en el carrito
+    //si ya está en el carrito
     const existProduct = cart.find(item => item.id === id);
 
     if (existProduct) {
@@ -110,8 +110,8 @@ export const ProductosScreen = () => {
 };
 
     const renderCategory = (title: string, data: Product[]) => (
-        <View style={{ marginBottom: 25, width: '100%', alignItems: 'center' }}>
-            <Text style={{ fontSize: 22, fontWeight: 'bold', color: '#451D1C', marginBottom: 10 }}>
+        <View style={stylesGlobal.renderCategoryView}>
+            <Text style={stylesGlobal.renderCategoryTitle}>
                 {title}
             </Text>
 
@@ -150,7 +150,6 @@ export const ProductosScreen = () => {
                     Productos
                 </Text>
 
-                {/* ICONO CARRITO CON CONTADOR */}
                 <View style={{ position: 'relative' }}>
                     <Icon
                         name='shopping-cart'
@@ -165,31 +164,13 @@ export const ProductosScreen = () => {
     }}
 />
 
-                    {cart.length > 0 && (
-                        <View style={{
-                            position: 'absolute',
-                            right: -6,
-                            top: -6,
-                            backgroundColor: 'red',
-                            borderRadius: 10,
-                            width: 18,
-                            height: 18,
-                            justifyContent: 'center',
-                            alignItems: 'center'
-                        }}>
-                            <Text style={{
-                                color: 'white',
-                                fontSize: 10,
-                                fontWeight: 'bold'
-                            }}>
-                                {cart.length}
-                            </Text>
-                        </View>
-                    )}
-                </View>
+        {cart.length > 0 && (
+            <View style={stylesGlobal.cartView}>
+                <Text style={stylesGlobal.cartText}>{cart.length}</Text>
             </View>
-
-            {/* LISTA */}
+        )}
+    </View>
+</View>
             <FlatList
                 data={[0]}
                 keyExtractor={item => item.toString()}
