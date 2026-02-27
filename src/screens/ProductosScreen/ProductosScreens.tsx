@@ -138,7 +138,6 @@ export const ProductosScreen = () => {
     return (
         <View style={[stylesGlobal.container, { flex: 1 }]}>
 
-            {/* HEADER */}
             <View style={{
                 flexDirection: 'row',
                 justifyContent: 'space-between',
